@@ -170,10 +170,13 @@ public final class QueryUtils {
                 // get the section name of the new
                 String sectionName = newObject.getString("sectionName");
 
+                // get the section name of the new
+                String publicationDate = newObject.getString("webPublicationDate").substring(0,10);
+
                 // get the section web url of the new
                 String webUrl = newObject.getString("webUrl");
 
-                News new_ = new News(webTitle, sectionName, webUrl);
+                News new_ = new News(webTitle, sectionName, publicationDate, webUrl);
                 news.add(new_);
             }
         } catch (JSONException e) {

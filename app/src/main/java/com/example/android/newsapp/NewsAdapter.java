@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class NewsAdapter extends ArrayAdapter<News> {
 
     public NewsAdapter(Activity context, ArrayList<News> news) {
@@ -34,6 +37,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Find the TextView in the list_item.xml layout with the ID section name
         TextView sectionNameView = (TextView) listItemView.findViewById(R.id.section_name);
         sectionNameView.setText(currentNew.getSectionName());
+
+        // Find the TextView in the list_item.xml layout with the ID publication date
+        TextView publicationDateView = (TextView) listItemView.findViewById(R.id.publication_date);
+        publicationDateView.setText(currentNew.getPublicationDate());
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

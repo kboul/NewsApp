@@ -18,6 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
-        tools:text="Politics" />
+        tools:text="Section Name" />
+
+    <TextView
+        android:id="@+id/publication_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmall"
+        tools:text="Publication Date" />
 
 </LinearLayout>

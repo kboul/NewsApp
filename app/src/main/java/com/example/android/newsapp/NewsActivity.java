@@ -24,7 +24,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
      * URL for news data from Guardian API
      */
     private static final String NEWS_URL =
-            "http://content.guardianapis.com/search?q=politics";
+            "http://content.guardianapis.com/search?q=politics&api-key=8ac1e9a6-c353-437b-a123-1b57e12c4bbd";
 
     /**
      * Constant value for the new loader ID. We can choose any integer.
@@ -96,6 +96,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
+
+        // Hide loading indicator because the data has been loaded
+        View loadingIndicator = findViewById(R.id.loading_indicator);
+        loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No news found."
         emptyStateTextView.setText(R.string.no_news);

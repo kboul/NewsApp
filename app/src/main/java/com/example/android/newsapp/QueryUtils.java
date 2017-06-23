@@ -39,6 +39,14 @@ public final class QueryUtils {
      * Query the USGS dataset and return a list of {@link News} objects.
      */
     public static List<News> fetchNewsData(String requestUrl) {
+
+        // force the background thread to sleep for 2 seconds to be able to display the progress bar
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Create URL object
         URL url = createUrl(requestUrl);
         Log.e(LOG_TAG, requestUrl);

@@ -14,6 +14,7 @@ import java.util.List;
 
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Loader;
+import android.widget.TextView;
 
 public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
 
@@ -23,7 +24,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
      * URL for news data from Guardian API
      */
     private static final String NEWS_URL =
-            "http://content.guardianapis.com/search?q=politics&api-key=8ac1e9a6-c353-437b-a123-1b57e12c4bbd";
+            "http://content.guardianapis.com/search?q=politics";
 
     /**
      * Constant value for the new loader ID. We can choose any integer.
@@ -35,6 +36,9 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
      * Adapter for the list of news
      */
     private NewsAdapter newsAdapter;
+
+    /** TextView that is displayed when the list is empty */
+    private TextView emptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         newListView.setAdapter(newsAdapter);
+
+        // Hook up the TextView as the empty view of the ListView
+        emptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        newListView.setEmptyView(emptyStateTextView);
 
         // Add an event listener on each new to open the correspondent new url
         newListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,6 +96,10 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
+
+        // Set empty state text to display "No news found."
+        emptyStateTextView.setText(R.string.no_news);
+
         //Log.i(LOG_TAG, "onLoadFinished has loaded");
         // Clear the adapter of previous news data
         newsAdapter.clear();

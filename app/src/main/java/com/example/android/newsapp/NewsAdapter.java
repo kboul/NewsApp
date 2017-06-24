@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class NewsAdapter extends ArrayAdapter<News> {
 
     public NewsAdapter(Activity context, ArrayList<News> news) {

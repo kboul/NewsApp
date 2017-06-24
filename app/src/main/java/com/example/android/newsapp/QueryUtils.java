@@ -17,6 +17,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
@@ -171,7 +174,8 @@ public final class QueryUtils {
                 String sectionName = newObject.getString("sectionName");
 
                 // get the section name of the new
-                String publicationDate = newObject.getString("webPublicationDate").substring(0,10);
+                String publicationDate = newObject.getString("webPublicationDate");
+                publicationDate = formatDate(publicationDate);
 
                 // get the section web url of the new
                 String webUrl = newObject.getString("webUrl");
@@ -188,5 +192,20 @@ public final class QueryUtils {
 
         // Return the list of news
         return news;
+    }
+
+    private static String formatDate(String dateString) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss'Z'");
+        Date dateObject = null;
+        try {
+            dateObject = simpleDateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy"); //MMM dd,yyyy hh:mm a
+        String date = simpleDateFormat.format(dateObject);
+
+        return date;
     }
 }

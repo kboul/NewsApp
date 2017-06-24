@@ -6,4 +6,13 @@
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.</string>
+
+    <!-- News title name-->
+    <string name="title">This is the news title. It is supposed to be very long. It can even reach three lines</string>
+
+    <!-- News section name-->
+    <string name="section_name">Section Name</string>
+
+    <!-- News publication date-->
+    <string name="publication_date">Publication Date</string>
 </resources>
